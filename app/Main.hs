@@ -1,4 +1,4 @@
-module Main where
+module Main (main) where
 
 import Control.Lens
 import Control.Monad (forever, when)
@@ -80,8 +80,8 @@ newPuzzle word = let discovered = map (const Nothing) word in Puzzle word discov
 charInWord :: Puzzle -> Char -> Bool
 charInWord (Puzzle word _ _) = (`elem` word)
 
-alreadyGuessed :: Puzzle -> Char -> Bool
-alreadyGuessed (Puzzle _ _ guesses) = (`elem` guesses)
+-- alreadyGuessed :: Puzzle -> Char -> Bool
+-- alreadyGuessed (Puzzle _ _ guesses) = (`elem` guesses)
 
 fillInCharacter :: Puzzle -> Char -> Puzzle
 fillInCharacter (Puzzle ogWord discovered guesses) guessedChar = fromMaybe (Puzzle ogWord discovered newGuessesLst) $ do
