@@ -23,6 +23,12 @@ description: A hangman game written in Haskell
 dependencies:
   - base >= 4.7 && < 5
 
+default-extensions:
+  - LambdaCase
+  - QuasiQuotes
+  - ImportQualifiedPost
+  - TypeApplications
+
 ghc-options:
   - -Wall
   - -Wcompat
@@ -36,6 +42,15 @@ ghc-options:
 
 library:
   source-dirs: src
+  exposed-modules:
+    - Lib
+  dependencies:
+    - split
+    - random
+    - containers
+    - PyF
+    - lens
+    - QuickCheck
 
 language: Haskell2010
 
@@ -49,14 +64,6 @@ executables:
       - -with-rtsopts=-N
     dependencies:
       - hangman
-      - split
-      - random
-      - containers
-      - PyF
-      - lens
-    default-extensions:
-      - LambdaCase
-      - QuasiQuotes
     when:
       - condition: false
         other-modules: Paths_hangman
@@ -71,3 +78,5 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - hangman
+      - QuickCheck
+      - hspec

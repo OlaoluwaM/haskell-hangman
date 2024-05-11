@@ -33,9 +33,20 @@ library
       Paths_hangman
   hs-source-dirs:
       src
+  default-extensions:
+      LambdaCase
+      QuasiQuotes
+      ImportQualifiedPost
+      TypeApplications
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      PyF
+    , QuickCheck
+    , base >=4.7 && <5
+    , containers
+    , lens
+    , random
+    , split
   default-language: Haskell2010
 
 executable hangman
@@ -45,28 +56,34 @@ executable hangman
   default-extensions:
       LambdaCase
       QuasiQuotes
+      ImportQualifiedPost
+      TypeApplications
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      PyF
-    , base >=4.7 && <5
-    , containers
+      base >=4.7 && <5
     , hangman
-    , lens
-    , random
-    , split
   default-language: Haskell2010
 
 test-suite hangman-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      SpecHook
+      TestsSpec
       Paths_hangman
   autogen-modules:
       Paths_hangman
   hs-source-dirs:
       test
+  default-extensions:
+      LambdaCase
+      QuasiQuotes
+      ImportQualifiedPost
+      TypeApplications
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      QuickCheck
+    , base >=4.7 && <5
     , hangman
+    , hspec
   default-language: Haskell2010
